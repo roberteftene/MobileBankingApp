@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="@string/welcome"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/tokenInputLogin"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:hint="Enter your token"
+        android:padding="15dp"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/passwordInputLogin"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:hint="Enter your password"
+        android:padding="15dp"
+        android:password="true"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="116dp"
+        android:layout_height="34dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:background="@color/colorPrimary"
+        android:text="Log In"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="New here?"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#fff"
+        android:gravity="center"
+        android:text="Register"
+        android:textColor="@color/colorPrimary" />
+
+
+</LinearLayout>
