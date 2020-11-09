@@ -5,64 +5,27 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Complete for sending money"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/nameInput"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="Enter the name"
-        android:padding="15dp"
-        android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/colorPrimary"
-        android:textSize="15dp" />
-
-    <EditText
-        android:id="@+id/valueInput"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="Enter the value"
-        android:padding="15dp"
-        android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/colorPrimary"
-        android:textSize="15dp" />
-
-    <EditText
-        android:id="@+id/accountInput"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="Enter the account"
-        android:padding="15dp"
-        android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/colorPrimary"
-        android:textSize="15dp" />
-
     <Button
-        android:id="@+id/sendMoneyBtn"
-        android:layout_width="120dp"
+        android:id="@+id/addManually"
+        android:layout_width="271dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
+        android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:layout_marginRight="90dp"
         android:backgroundTint="#fff"
         android:gravity="center"
-        android:text="Send"
+        android:text="Send manually"
         android:textColor="@color/colorPrimary" />
+
+    <FrameLayout
+        android:id="@+id/partnerList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <FrameLayout
+        android:id="@+id/sendForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 
 </LinearLayout>

@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         String name = intent.getStringExtra("param1");
         float value = intent.getFloatExtra("param2", 20);
         String account = intent.getStringExtra("param3");
-        mockSend = new SendModel(name, value, account);
+        mockSend = new SendModel(name, value, account, false);
         TransactionModel transactionModel = new TransactionModel(value, new Date(), name);
         transactions.add(transactionModel);
 
