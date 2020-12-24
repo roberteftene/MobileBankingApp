@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.InfoActivity"></activity>
+        <activity android:name=".activities.RegisterActivity"></activity>
+        <activity android:name=".activities.InfoActivity" />
         <activity android:name=".activities.PaymentsActivity" />
         <activity android:name=".activities.SendMoneyActivity" />
         <activity android:name=".activities.LoginActivity">

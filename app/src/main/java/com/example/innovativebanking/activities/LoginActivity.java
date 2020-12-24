@@ -14,6 +14,7 @@ import com.example.innovativebanking.R;
 public class LoginActivity extends AppCompatActivity {
 
     private Button login;
+    private Button register;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -24,10 +25,18 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         login = findViewById(R.id.loginBtn);
+        register = findViewById(R.id.registerBtn);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
