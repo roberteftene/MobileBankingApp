@@ -42,6 +42,7 @@ public class SendMoneyActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(R.anim.fragment_close_enter, R.anim.fragment_close_exit);
                     transaction.replace(R.id.partnerList, sendMoneyFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();

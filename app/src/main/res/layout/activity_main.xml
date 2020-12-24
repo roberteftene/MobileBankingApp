@@ -86,6 +86,15 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/sendTransactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="20dp"
+        android:text="Send transactions"
+        android:textColor="#fff" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -128,6 +137,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:drawableTop="@drawable/ic_baseline_account_balance_wallet_24"
                 android:text="Payments"
+                android:id="@+id/paymentsBtn"
                 android:textColor="#fff" />
 
             <Button
@@ -137,6 +147,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:drawableTop="@drawable/ic_baseline_info_24"
                 android:text="Info"
+                android:id="@+id/infoBtn"
                 android:textColor="#fff" />
 
         </LinearLayout>
