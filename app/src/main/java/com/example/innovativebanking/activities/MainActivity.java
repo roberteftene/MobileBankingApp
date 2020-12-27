@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private UserModel mockUser;
     private SendModel mockSend;
     private static final String TAG = MainActivity.class.getSimpleName();
-    private Button sendMoneyBtn, infoBtn, paymentsBtn, sendTransactions;
+    private Button sendMoneyBtn, infoBtn, paymentsBtn, sendTransactions, addMoney;
     private TextView userGreet, userBalance;
 
     @SuppressLint("WrongConstant")
@@ -64,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        addMoney.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddMoneyActivity.class);
                 startActivity(intent);
             }
         });
@@ -155,14 +163,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void findViews() {
-
         transactionsList = findViewById(R.id.transactionList);
         userGreet = findViewById(R.id.userGreet);
         userBalance = findViewById(R.id.userBalance);
         sendMoneyBtn = findViewById(R.id.sendMoneyBtn);
+        addMoney = findViewById(R.id.addMoney);
         paymentsBtn = findViewById(R.id.paymentsBtn);
         infoBtn = findViewById(R.id.infoBtn);
         sendTransactions = findViewById(R.id.sendTransactions);
-
     }
 }

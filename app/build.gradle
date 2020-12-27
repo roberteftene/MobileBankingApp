@@ -34,4 +34,5 @@ dependencies {
 
     // Java language implementation
     implementation "androidx.fragment:fragment:$fragment_version"
+    compile 'com.braintreepayments:card-form:3.1.1'
 }

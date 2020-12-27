@@ -46,7 +46,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/addMoney"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -55,7 +55,7 @@
             android:backgroundTint="#933F44"
             android:drawableStart="@android:drawable/ic_input_add"
             android:drawableTint="#fff"
-            android:text="Add money"
+            android:text="@string/add_money"
             android:textColor="#fff" />
 
         <Button

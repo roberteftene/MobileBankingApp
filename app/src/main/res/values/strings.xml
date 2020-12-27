@@ -12,4 +12,40 @@
     <string name="select_your_birthday">Select your birthday</string>
     <string name="enter_your_phone_number">Enter your phone number</string>
     <string name="enter_your_email">Enter your email</string>
+    <string name="add_money">Add money</string>
+    <string name="minimum_amount"><font size="10">Minimum amount is 50 RON</font></string>
+    <string name="add_money_heading">Enter the amount of money you wish to add to your account</string>
+    <string name="curr_balance">Current balance: 300RON</string>
+    <string name="add_moneyBtn">Add money</string>
+    <string name="add_newCard_heading">Select a saved card or chose to add a new card</string>
+    <string name="add_card">Add card</string>
+    <string name="complete_with_your_card_details">Complete with your card details</string>
+    <string name="card_number_example">ex: 1234 4534 2342 1234</string>
+    <string name="card_personName">FIRSTNAME LASTNAME</string>
+    <string name="cvv_ex">CVV/CVV2</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string-array name="expiry_years_array">
+        <item>2020</item>
+        <item>2021</item>
+        <item>2022</item>
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2028</item>
+    </string-array>
+    <string-array name="expiry_months_array">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
 </resources>
