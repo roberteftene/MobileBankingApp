@@ -61,6 +61,13 @@
             android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
 
+        <ListView
+            android:id="@+id/savedCreditCardsLv"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+
         <Button
             android:id="@+id/addNewCard"
             android:layout_width="wrap_content"

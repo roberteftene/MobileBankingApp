@@ -24,6 +24,11 @@
     <string name="card_personName">FIRSTNAME LASTNAME</string>
     <string name="cvv_ex">CVV/CVV2</string>
     <string name="expiration_date">Expiration Date</string>
+    <string name="save_card_hint_checkbox">Save card</string>
+    <string name="creditCard_personName">Eftene Robert</string>
+    <string name="creditcard_number">1234 2345 2485 2909</string>
+    <string name="creditcard_item_checkbox">Chose this</string>
+    <string name="change_cardDetails_btn">Change</string>
     <string-array name="expiry_years_array">
         <item>2020</item>
         <item>2021</item>

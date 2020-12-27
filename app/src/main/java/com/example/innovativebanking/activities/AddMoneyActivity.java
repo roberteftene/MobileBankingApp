@@ -6,14 +6,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.innovativebanking.Adapters.CreditCardAdapter;
 import com.example.innovativebanking.R;
+import com.example.innovativebanking.models.CreditCardModel;
+
+import java.util.ArrayList;
 
 public class AddMoneyActivity extends AppCompatActivity {
 
     private Button addCard;
+    private static CreditCardAdapter creditCardAdapter;
+    ArrayList<CreditCardModel> creditCardModelList;
+    ListView creditCardsListView;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -22,6 +30,12 @@ public class AddMoneyActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
         setContentView(R.layout.activity_add_money);
+        creditCardsListView = findViewById(R.id.savedCreditCardsLv);
+        creditCardModelList = new ArrayList<>();
+        creditCardModelList.add(new CreditCardModel(1234876428351234L, "Eftene Robert", 333, "20-10-2028"));
+        creditCardModelList.add(new CreditCardModel(1234876428351234L, "Amalia Cornea", 234, "12-12-2025"));
+        creditCardAdapter = new CreditCardAdapter(creditCardModelList, getApplicationContext());
+        creditCardsListView.setAdapter(creditCardAdapter);
         addCard = findViewById(R.id.addNewCard);
         addCard.setOnClickListener(new View.OnClickListener() {
             @Override
