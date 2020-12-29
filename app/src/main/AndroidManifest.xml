@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.AddCardActivity"></activity>
+        <activity android:name=".activities.InvestActivity"></activity>
+        <activity android:name=".activities.AddCardActivity" />
         <activity android:name=".activities.AddMoneyActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.InfoActivity" />

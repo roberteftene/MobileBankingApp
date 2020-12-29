@@ -7,8 +7,8 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.innovativebanking.Adapters.TransactionsAdapter;
 import com.example.innovativebanking.R;
+import com.example.innovativebanking.adapters.TransactionsAdapter;
 import com.example.innovativebanking.models.TransactionModel;
 
 import java.util.ArrayList;

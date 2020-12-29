@@ -29,6 +29,8 @@
     <string name="creditcard_number">1234 2345 2485 2909</string>
     <string name="creditcard_item_checkbox">Chose this</string>
     <string name="change_cardDetails_btn">Change</string>
+    <string name="investBtnText">Invest</string>
+    <string name="invest_heading">Discover the most popular stocks</string>
     <string-array name="expiry_years_array">
         <item>2020</item>
         <item>2021</item>

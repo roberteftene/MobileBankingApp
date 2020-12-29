@@ -10,8 +10,8 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.innovativebanking.Adapters.CreditCardAdapter;
 import com.example.innovativebanking.R;
+import com.example.innovativebanking.adapters.CreditCardAdapter;
 import com.example.innovativebanking.models.CreditCardModel;
 
 import java.util.ArrayList;

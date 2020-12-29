@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="40dp"
-    android:background="@color/colorPrimary"
     android:orientation="horizontal">
 
 
@@ -12,8 +11,10 @@
         android:id="@+id/cardIcon"
         android:layout_width="69dp"
         android:layout_height="64dp"
-        android:background="@color/colorPrimary"
-        app:srcCompat="@mipmap/ic_card_white_bigger_foreground" />
+        android:background="@drawable/custom_shape_lv_item_corners_left"
+        app:srcCompat="@mipmap/ic_card_white_bigger_foreground"
+
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -31,7 +32,7 @@
             android:text="@string/creditCard_personName"
             android:textAllCaps="true"
             android:textColor="@color/color_white"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
         <TextView
@@ -41,6 +42,7 @@
             android:gravity="center"
             android:text="@string/creditcard_number"
             android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -48,8 +50,18 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/custom_shape_lv_item_right_corners"
         android:orientation="vertical">
+
+        <Button
+            android:id="@+id/changeCardDetailsBtn"
+            android:layout_width="70dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/color_white"
+            android:text="@string/change_cardDetails_btn"
+            android:textColor="@color/colorPrimary"
+            android:textSize="10dp" />
 
         <CheckBox
             android:id="@+id/cardCheckbox"
@@ -62,16 +74,6 @@
             android:textColor="@color/color_white"
             android:textSize="10dp"
             android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/changeCardDetailsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="34dp"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/color_white"
-            android:text="@string/change_cardDetails_btn"
-            android:textColor="@color/colorPrimary"
-            android:textSize="10dp" />
 
 
     </LinearLayout>

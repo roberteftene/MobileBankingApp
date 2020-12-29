@@ -4,4 +4,6 @@
     <color name="colorPrimaryWhiter">#C65D5D</color>
     <color name="color_white">#fff</color>
     <color name="color_grey">#4A4A4A</color>
+    <color name="color_green_stockValue">#61b15a</color>
+    <color name="color_smoke_white">#f5f5f5</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.innovativebanking.Adapters;
+package com.example.innovativebanking.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
