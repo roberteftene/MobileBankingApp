@@ -41,6 +41,7 @@ public class PaymentsActivity extends AppCompatActivity implements TransactionsA
                 android.R.id.text1, items);
         listView.setAdapter(listAdapter);
 
+
     }
 
     @Override

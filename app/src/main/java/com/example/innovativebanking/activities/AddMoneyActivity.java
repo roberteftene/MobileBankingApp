@@ -19,7 +19,6 @@ import java.util.ArrayList;
 public class AddMoneyActivity extends AppCompatActivity {
 
     private Button addCard;
-    private static CreditCardAdapter creditCardAdapter;
     ArrayList<CreditCardModel> creditCardModelList;
     ListView creditCardsListView;
 
@@ -30,11 +29,12 @@ public class AddMoneyActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
         setContentView(R.layout.activity_add_money);
+
         creditCardsListView = findViewById(R.id.savedCreditCardsLv);
         creditCardModelList = new ArrayList<>();
-        creditCardModelList.add(new CreditCardModel(1234876428351234L, "Eftene Robert", 333, "20-10-2028"));
-        creditCardModelList.add(new CreditCardModel(1234876428351234L, "Amalia Cornea", 234, "12-12-2025"));
-        creditCardAdapter = new CreditCardAdapter(creditCardModelList, getApplicationContext());
+        creditCardModelList.add(new CreditCardModel(1234546787922231L, "Eftene Robert", 333, "20-10-2028"));
+        creditCardModelList.add(new CreditCardModel(1234546787922231L, "Amalia Cornea", 234, "12-12-2025"));
+        CreditCardAdapter creditCardAdapter = new CreditCardAdapter(this, creditCardModelList);
         creditCardsListView.setAdapter(creditCardAdapter);
         addCard = findViewById(R.id.addNewCard);
         addCard.setOnClickListener(new View.OnClickListener() {
