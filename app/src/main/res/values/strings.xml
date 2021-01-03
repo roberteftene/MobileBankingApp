@@ -31,6 +31,8 @@
     <string name="change_cardDetails_btn">Change</string>
     <string name="investBtnText">Invest</string>
     <string name="invest_heading">Discover the most popular stocks</string>
+    <string name="enter_your_email_login">Enter your email</string>
+    <string name="enter_your_password_login">Enter your password</string>
     <string-array name="expiry_years_array">
         <item>2020</item>
         <item>2021</item>

@@ -31,7 +31,7 @@ public class TransactionsAdapter extends BaseAdapter {
     Context context;
     Map<Long, TransactionModel> transactionList;
     TransactionAdapterInteraction adapterListener;
-    private HashMap<Long, Boolean> itemState = new HashMap<>();
+    private HashMap<Integer, Boolean> itemState = new HashMap<>();
 
     public TransactionsAdapter(Context context, Map<Long, TransactionModel> transactionList) {
         this.transactionList = transactionList;

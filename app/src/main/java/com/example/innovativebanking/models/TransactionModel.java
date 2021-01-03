@@ -1,33 +1,41 @@
 package com.example.innovativebanking.models;
 
-import java.util.Date;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "transaction")
 public class TransactionModel {
 
-    private Long id;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    @ColumnInfo(name = "transaction_value")
     private float money;
-    private Date date;
+    @ColumnInfo(name = "transaction_date")
+    private String date;
+    @ColumnInfo(name = "transaction_name")
     private String name;
+    @ColumnInfo(name = "userId")
+    private int userId;
+
+    @Ignore
     private String transactionImage;
+    @Ignore
     private boolean isChecked = false;
 
-    public TransactionModel(float money, Date date, String name, Long id, String image) {
-        this.transactionImage = image;
-        this.id = id;
+    public TransactionModel(float money, String date, String name, int userId) {
         this.money = money;
         this.date = date;
         this.name = name;
+        this.userId = userId;
     }
 
-    public TransactionModel(TransactionModel c1, int i) {
-        this.id = c1.getId() + i;
-        this.name = c1.name;
-        this.date = c1.date;
-        this.money = c1.money;
-    }
-
-    public TransactionModel() {
-
+    public TransactionModel(float money, String date, String name, String image) {
+        this.transactionImage = image;
+        this.money = money;
+        this.date = date;
+        this.name = name;
     }
 
     public String getImage() {
@@ -46,11 +54,11 @@ public class TransactionModel {
         isChecked = isChecked;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -62,11 +70,11 @@ public class TransactionModel {
         this.money = money;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -78,12 +86,17 @@ public class TransactionModel {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Name: " +
-                name + "\n" +
-                "Money: " + money + "\n" +
-                "Date: " + date;
+    public int getUserId() {
+        return userId;
     }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return " " + name + "    " + money + " RON" + "\n" +
+                " " + date;
+    }
 }

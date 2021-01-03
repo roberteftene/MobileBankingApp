@@ -12,18 +12,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.innovativebanking.R;
+import com.example.innovativebanking.database.AppDatabase;
+import com.example.innovativebanking.models.UserModel;
 
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
     public static final Pattern PASSWORD = Pattern.compile("^" +
-            "(?=.*[0-9])" +         //at least 1 digit
-            "(?=.*[a-z])" +         //at least 1 lower case letter
-            "(?=.*[A-Z])" +         //at least 1 upper case letter
-            "(?=.*[@#$%^&+=])" +    //at least 1 special character
-            "(?=\\S+$)" +           //no white spaces
-            ".{4,}" +               //at least 4 characters
+            "(?=.*[0-9])" +
+            "(?=.*[a-z])" +
+            "(?=.*[A-Z])" +
+            "(?=.*[@#$%^&+=])" +
+            "(?=\\S+$)" +
+            ".{4,}" +
             "$");
     private EditText firstNameTxt, lastNameTxt, phoneTxt, emailTxt, passTxt;
     private DatePicker birthday;
@@ -36,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
         setContentView(R.layout.activity_register);
+        final AppDatabase appDatabase = AppDatabase.getInstance(this);
 
         findViews();
         submitRegisterBtn.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +76,14 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 if (valid == true) {
+                    StringBuilder birthdayUser = new StringBuilder();
+                    birthdayUser.append(birthday.getDayOfMonth());
+                    birthdayUser.append("/");
+                    birthdayUser.append(birthday.getMonth());
+                    birthdayUser.append("/");
+                    birthdayUser.append(birthday.getYear());
+                    UserModel userModel = new UserModel(1, firstNameTxt.getText().toString(), lastNameTxt.getText().toString(), emailTxt.getText().toString(), passTxt.getText().toString(), birthdayUser.toString());
+                    appDatabase.userDAO().insertUser(userModel);
                     emptyFields();
                     Toast.makeText(RegisterActivity.this, "Everything is good, you can login now", Toast.LENGTH_SHORT).show();
                 }

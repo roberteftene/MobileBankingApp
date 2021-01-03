@@ -12,7 +12,6 @@ import com.example.innovativebanking.adapters.TransactionsAdapter;
 import com.example.innovativebanking.models.TransactionModel;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,20 +54,20 @@ public class PaymentsActivity extends AppCompatActivity implements TransactionsA
     }
 
     public void initMocks() {
-        TransactionModel t1 = new TransactionModel(300, new Date(), "Shop", 1L, "http://pdm.ase.ro/images/tehnologii.png");
-        TransactionModel t2 = new TransactionModel(600, new Date(), "MegaImage", 2L, "http://pdm.ase.ro/images/tehnologii.png");
-        TransactionModel t3 = new TransactionModel(500, new Date(), "MegaImage", 3L, "http://pdm.ase.ro/images/tehnologii.png");
-        TransactionModel t4 = new TransactionModel(200, new Date(), "MegaImage", 4L, "http://pdm.ase.ro/images/tehnologii.png");
-        TransactionModel t5 = new TransactionModel(100, new Date(), "MegaImage", 5L, "http://pdm.ase.ro/images/tehnologii.png");
-        TransactionModel t6 = new TransactionModel(600, new Date(), "MegaImage", 6L, "http://pdm.ase.ro/images/tehnologii.png");
-        TransactionModel t7 = new TransactionModel(900, new Date(), "MegaImage", 7L, "http://pdm.ase.ro/images/tehnologii.png");
-
-        transactionModelMap.put(t1.getId(), t1);
-        transactionModelMap.put(t2.getId(), t2);
-        transactionModelMap.put(t3.getId(), t3);
-        transactionModelMap.put(t4.getId(), t4);
-        transactionModelMap.put(t5.getId(), t5);
-        transactionModelMap.put(t6.getId(), t6);
-        transactionModelMap.put(t7.getId(), t7);
+//        TransactionModel t1 = new TransactionModel(300, new Date(), "Shop", 1L, "http://pdm.ase.ro/images/tehnologii.png");
+//        TransactionModel t2 = new TransactionModel(600, new Date(), "MegaImage", 2L, "http://pdm.ase.ro/images/tehnologii.png");
+//        TransactionModel t3 = new TransactionModel(500, new Date(), "MegaImage", 3L, "http://pdm.ase.ro/images/tehnologii.png");
+//        TransactionModel t4 = new TransactionModel(200, new Date(), "MegaImage", 4L, "http://pdm.ase.ro/images/tehnologii.png");
+//        TransactionModel t5 = new TransactionModel(100, new Date(), "MegaImage", 5L, "http://pdm.ase.ro/images/tehnologii.png");
+//        TransactionModel t6 = new TransactionModel(600, new Date(), "MegaImage", 6L, "http://pdm.ase.ro/images/tehnologii.png");
+//        TransactionModel t7 = new TransactionModel(900, new Date(), "MegaImage", 7L, "http://pdm.ase.ro/images/tehnologii.png");
+//
+//        transactionModelMap.put(t1.getId(), t1);
+//        transactionModelMap.put(t2.getId(), t2);
+//        transactionModelMap.put(t3.getId(), t3);
+//        transactionModelMap.put(t4.getId(), t4);
+//        transactionModelMap.put(t5.getId(), t5);
+//        transactionModelMap.put(t6.getId(), t6);
+//        transactionModelMap.put(t7.getId(), t7);
     }
 }

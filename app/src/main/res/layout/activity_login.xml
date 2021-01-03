@@ -17,13 +17,13 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/tokenInputLogin"
+        android:id="@+id/emailInputTxt"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/colorPrimary"
-        android:hint="Enter your token"
+        android:hint="@string/enter_your_email_login"
         android:padding="15dp"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
@@ -36,7 +36,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/colorPrimary"
-        android:hint="Enter your password"
+        android:hint="@string/enter_your_password_login"
         android:padding="15dp"
         android:password="true"
         android:textColor="@color/colorPrimary"

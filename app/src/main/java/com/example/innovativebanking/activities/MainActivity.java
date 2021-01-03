@@ -4,27 +4,21 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.innovativebanking.R;
-import com.example.innovativebanking.UploadAsync;
+import com.example.innovativebanking.adapters.TransactionAdapter;
+import com.example.innovativebanking.database.AppDatabase;
+import com.example.innovativebanking.database.UserTransactions;
 import com.example.innovativebanking.models.SendModel;
 import com.example.innovativebanking.models.TransactionModel;
 import com.example.innovativebanking.models.UserModel;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.innovativebanking.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private Button sendMoneyBtn, infoBtn, paymentsBtn, sendTransactions, addMoney, investBtn;
     private TextView userGreet, userBalance;
+    TransactionModel transactionModel1;
+    TransactionModel transactionModel2;
+    TransactionModel transactionModel3;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -47,9 +44,34 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
         setContentView(R.layout.activity_main);
-        initMocks();
+
+//        initMocks();
         findViews();
 
+        Utils utils = new Utils(this);
+        final AppDatabase appDatabase = AppDatabase.getInstance(this);
+        UserModel currUser = appDatabase.userDAO().getUserById(utils.getCurrentUserId());
+        userGreet.setText("Hello " + currUser.getFirstName());
+        userBalance.setText("Your balance is " + currUser.getBalance());
+
+        List<UserTransactions> loggedUserTransactions = appDatabase.userDAO().getAllTransactionsByUserId();
+        for (UserTransactions loggedUserTransaction : loggedUserTransactions) {
+            if (loggedUserTransaction.userModel.getUserId() == utils.getCurrentUserId()) {
+                transactions.addAll(loggedUserTransaction.transactionModelList);
+            }
+        }
+
+        TransactionAdapter transactionAdapter = new TransactionAdapter(this, transactions);
+//        ArrayAdapter<TransactionModel> arrayAdapter = new ArrayAdapter<TransactionModel>(this, android.R.layout.simple_list_item_1, transactions) {
+//            @Override
+//            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+//                View view = super.getView(position, convertView, parent);
+//                TextView tv = view.findViewById(android.R.id.text1);
+//                tv.setTextColor(getResources().getColor(R.color.colorPrimary));
+//                return view;
+//            }
+//        };
+        transactionsList.setAdapter(transactionAdapter);
 
         paymentsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,20 +106,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        userGreet.setText("Hello " + mockUser.getUserName());
-        userBalance.setText("Your balance is " + mockUser.getBalance());
 
-        //TODO make a separat package for adapters
-        ArrayAdapter<TransactionModel> arrayAdapter = new ArrayAdapter<TransactionModel>(this, android.R.layout.simple_list_item_1, transactions) {
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                TextView tv = view.findViewById(android.R.id.text1);
-                tv.setTextColor(getResources().getColor(R.color.colorPrimary));
-                return view;
-            }
-        };
-        transactionsList.setAdapter(arrayAdapter);
 
         sendMoneyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,63 +120,20 @@ public class MainActivity extends AppCompatActivity {
         float value = intent.getFloatExtra("param2", 20);
         String account = intent.getStringExtra("param3");
         mockSend = new SendModel(name, value, account, false);
-        TransactionModel transactionModel = new TransactionModel(value, new Date(), name, 1L, "imageEx");
-        transactions.add(transactionModel);
-
-        sendTransactions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                JSONObject postData1 = null;
-                JSONObject jsonLibrary = new JSONObject();
-                JSONArray jsonArray = new JSONArray();
-
-                try {
-                    for (int i = 0; i < transactions.size(); i++) {
-                        postData1 = new JSONObject();
-                        postData1.put("name", transactions.get(i).getName());
-                        postData1.put("value", transactions.get(i).getMoney());
-                        postData1.put("date", transactions.get(i).getDate());
-                    }
-//                    postData.put("name",transactions.get(0).getName());
-//                    postData.put("value",transactions.get(0).getMoney());
-//                    postData.put("date",transactions.get(0).getDate());
-//
-//                    postData.put("name",transactions.get(1).getName());
-//                    postData.put("value",transactions.get(1).getMoney());
-//                    postData.put("date",transactions.get(1).getDate());
-//
-//                    postData.put("name",transactions.get(2).getName());
-//                    postData.put("value",transactions.get(2).getMoney());
-//                    postData.put("date",transactions.get(2).getDate());
-//                    postData.put("name","megaimage");
-//                    postData.put("value","200");
-//                    postData.put("date","10.10.2020");
-                    jsonArray.put(postData1);
-                    jsonLibrary.put("EfteneRobert", jsonArray);
-                    Log.d(TAG, "\n Transaction: " + postData1.toString());
-                    new UploadAsync().execute("http://167.99.143.42/upload", jsonLibrary.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+//        TransactionModel transactionModel = new TransactionModel(value, new Date(), name, 1L, "imageEx");
+//        transactions.add(transactionModel);
 
     }
 
-    public void initMocks() {
+    public void initMocks(int currUserId) {
         Date date = new Date();
-        TransactionModel transactionModel1 = new TransactionModel(37.5f, date, "MegaImage", 1L, "imageEx");
-        TransactionModel transactionModel2 = new TransactionModel(100, date, "Carrefour", 2L, "imageEx");
-        TransactionModel transactionModel3 = new TransactionModel(250, date, "Zara", 3L, "imageEx");
-        TransactionModel transactionModel4 = new TransactionModel(30, date, "MegaImage", 4L, "imageEx");
-        TransactionModel transactionModel5 = new TransactionModel(22, date, "Immedio", 5L, "imageEx");
+        transactionModel1 = new TransactionModel(35, date.toString(), "MegaImage", currUserId);
+        transactionModel2 = new TransactionModel(200, date.toString(), "Carrefour", currUserId);
+        transactionModel3 = new TransactionModel(150, date.toString(), "Zara", currUserId);
         transactions.add(transactionModel1);
         transactions.add(transactionModel2);
         transactions.add(transactionModel3);
-        transactions.add(transactionModel4);
-        transactions.add(transactionModel5);
 
-        mockUser = new UserModel(530, "Robert Eftene");
     }
 
     public void findViews() {
