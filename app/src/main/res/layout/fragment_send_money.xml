@@ -43,6 +43,7 @@
             android:padding="15dp"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimary"
+            android:inputType="number"
             android:textSize="15dp" />
 
         <EditText

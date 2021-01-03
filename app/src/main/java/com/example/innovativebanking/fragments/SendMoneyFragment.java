@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -75,15 +76,35 @@ public class SendMoneyFragment extends Fragment {
         submitSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle result = new Bundle();
-                result.putString("bundleKey", nameInput.getText().toString());
-                result.putString("accountKey", accountInput.getText().toString());
-                if (isPartenerInput.isChecked()) {
-                    getParentFragmentManager().setFragmentResult("key", result);
+                boolean valid = true;
+                if (nameInput.getText().toString().length() < 4) {
+                    valid = false;
+                    Toast.makeText(getActivity(), "Invalid name", Toast.LENGTH_SHORT).show();
                 }
-                nameInput.setText("");
-                accountInput.setText("");
-                valueInput.setText("");
+                if (!nameInput.getText().toString().matches("[a-zA-Z]+")) {
+                    valid = false;
+                    Toast.makeText(getActivity(), "The name should contain only letters", Toast.LENGTH_SHORT).show();
+                }
+                if (valueInput.getText().toString().equals("")) {
+                    valid = false;
+                    Toast.makeText(getActivity(), "Enter a value", Toast.LENGTH_SHORT).show();
+                }
+                if (accountInput.getText().toString().equals("")) {
+                    valid = false;
+                    Toast.makeText(getActivity(), "Enter an account", Toast.LENGTH_SHORT).show();
+                }
+                if (valid) {
+                    Toast.makeText(getActivity(), "Succes", Toast.LENGTH_SHORT).show();
+                    Bundle result = new Bundle();
+                    result.putString("bundleKey", nameInput.getText().toString());
+                    result.putString("accountKey", accountInput.getText().toString());
+                    if (isPartenerInput.isChecked()) {
+                        getParentFragmentManager().setFragmentResult("key", result);
+                    }
+                    nameInput.setText("");
+                    accountInput.setText("");
+                    valueInput.setText("");
+                }
             }
         });
         return v;
