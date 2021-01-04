@@ -54,7 +54,13 @@ public class TransactionAdapter extends ArrayAdapter<TransactionModel> {
         }
         viewHolder.transactionReceiverNameTxt.setText(transactionModel.getName());
         viewHolder.transactionDateTxt.setText(transactionModel.getDate());
-        viewHolder.transactionValueTxt.setText(transactionModel.getMoney() + " RON");
+        StringBuilder transactionSign = new StringBuilder();
+        if(transactionModel.isExpense()) {
+            transactionSign.append("-");
+        } else {
+            transactionSign.append("+");
+        }
+        viewHolder.transactionValueTxt.setText(transactionSign.toString() + transactionModel.getMoney() + " RON");
         return convertView;
     }
 

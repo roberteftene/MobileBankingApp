@@ -53,15 +53,34 @@
         android:background="@drawable/custom_shape_lv_item_right_corners"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
         <Button
             android:id="@+id/changeCardDetailsBtn"
-            android:layout_width="70dp"
+            android:layout_width="45dp"
             android:layout_height="34dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/color_white"
+            android:drawableLeft="@drawable/ic_baseline_edit__red_24"
             android:text="@string/change_cardDetails_btn"
             android:textColor="@color/colorPrimary"
-            android:textSize="10dp" />
+            android:textSize="5dp" />
+
+            <Button
+                android:id="@+id/deleteCard"
+                android:layout_width="45dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/color_white"
+                android:drawableLeft="@drawable/ic_baseline_delete_24"
+                android:text="@string/change_cardDetails_btn"
+                android:textColor="@color/colorPrimary"
+                android:textSize="5dp" />
+
+        </LinearLayout>
 
         <CheckBox
             android:id="@+id/cardCheckbox"

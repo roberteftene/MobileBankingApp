@@ -68,7 +68,7 @@
             android:backgroundTint="#933F44"
             android:drawableStart="@android:drawable/ic_menu_send"
             android:drawableTint="#fff"
-            android:text="Send Money"
+            android:text="@string/send_money_btnText"
             android:textColor="#fff" />
     </LinearLayout>
 
@@ -81,7 +81,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:text="Transaction History"
+        android:text="@string/transaction_history"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
         android:textStyle="bold" />
@@ -93,7 +93,9 @@
         android:layout_gravity="center"
         android:backgroundTint="@color/colorPrimary"
         android:elevation="20dp"
-        android:text="Send transactions"
+        android:drawableLeft="@drawable/ic_baseline_save_file_24"
+        android:drawablePadding="10dp"
+        android:text="@string/save_transactions"
         android:textColor="#fff" />
 
     <RelativeLayout
@@ -137,7 +139,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
                 android:drawableTop="@drawable/ic_baseline_account_balance_wallet_24"
-                android:text="Payments"
+                android:text="@string/payments_btn_txt"
                 android:id="@+id/paymentsBtn"
                 android:textColor="#fff" />
 
@@ -146,8 +148,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimary"
-                android:drawableTop="@drawable/ic_baseline_info_24"
-                android:text="Info"
+                android:drawableTop="@drawable/ic_baseline_settings_account_24"
+                android:text="@string/info_btn_txt"
                 android:id="@+id/infoBtn"
                 android:textColor="#fff" />
 

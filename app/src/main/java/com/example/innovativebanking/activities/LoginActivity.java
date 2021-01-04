@@ -54,6 +54,8 @@ public class LoginActivity extends AppCompatActivity {
                         Log.v("Session", "ID:" + userModelList.get(i).getUserId());
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
+                        mailAccount.setText("");
+                        passAccount.setText("");
                         break;
                     } else {
                         Toast.makeText(LoginActivity.this, "Email/Password incorrect", Toast.LENGTH_SHORT).show();

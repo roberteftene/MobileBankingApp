@@ -1,5 +1,6 @@
 package com.example.innovativebanking.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.example.innovativebanking.activities.MainActivity;
 import com.example.innovativebanking.database.AppDatabase;
 import com.example.innovativebanking.models.PartnerModel;
 import com.example.innovativebanking.models.TransactionModel;
+import com.example.innovativebanking.models.UserModel;
 import com.example.innovativebanking.utils.Utils;
 
 import java.util.Date;
@@ -86,6 +88,9 @@ public class SendMoneyFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 boolean valid = true;
+                Utils utils = new Utils(getContext());
+                UserModel currUser = appDatabase.userDAO().getUserById(utils.getCurrentUserId());
+
                 if (nameInput.getText().toString().length() < 4) {
                     valid = false;
                     Toast.makeText(getActivity(), "Invalid name", Toast.LENGTH_SHORT).show();
@@ -102,11 +107,18 @@ public class SendMoneyFragment extends Fragment {
                     valid = false;
                     Toast.makeText(getActivity(), "Enter an account", Toast.LENGTH_SHORT).show();
                 }
+                if(currUser.getBalance() < Float.parseFloat(valueInput.getText().toString())){
+                    valid = false;
+                    Toast.makeText(getActivity(), "You dont have enough money", Toast.LENGTH_SHORT).show();
+                }
                 if (valid) {
-                    Utils utils = new Utils(getContext());
-                    List<PartnerModel> partnerModels = appDatabase.partnerDAO().getAllPartners();
+                    List<PartnerModel> partnerModels = appDatabase.partnerDAO().getAllPartners(utils.getCurrentUserId());
                     PartnerModel partnerModel = new PartnerModel(nameInput.getText().toString(), accountInput.getText().toString(), utils.getCurrentUserId());
-                    appDatabase.transactionDAO().insertTransaction(new TransactionModel(Integer.parseInt(valueInput.getText().toString()), new Date().toString(), nameInput.getText().toString(), utils.getCurrentUserId()));
+                    appDatabase.transactionDAO().insertTransaction(new TransactionModel(Integer.parseInt(valueInput.getText().toString()), new Date().toString(), nameInput.getText().toString(), utils.getCurrentUserId(), true));
+                    float moneyToBeSend = Float.parseFloat(valueInput.getText().toString());
+                    float finalBalance = currUser.getBalance() - moneyToBeSend;
+                    currUser.setBalance(finalBalance);
+                    appDatabase.userDAO().updateUser(currUser);
                     int contor = 0;
                     if (isPartenerInput.isChecked()) {
                         for (PartnerModel model : partnerModels) {
@@ -126,6 +138,7 @@ public class SendMoneyFragment extends Fragment {
                     valueInput.setText("");
                     Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
                     startActivity(intent);
+                    ((Activity)getContext()).finish();
                 }
             }
         });

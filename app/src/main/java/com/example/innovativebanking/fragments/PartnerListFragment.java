@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.innovativebanking.R;
 import com.example.innovativebanking.database.AppDatabase;
 import com.example.innovativebanking.models.PartnerModel;
+import com.example.innovativebanking.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +76,11 @@ public class PartnerListFragment extends Fragment {
         getActivity().findViewById(R.id.addManually).setVisibility(View.VISIBLE);
         partenerListView = v.findViewById(R.id.partnerListView);
         AppDatabase appDatabase = AppDatabase.getInstance(getContext());
-        parteners = appDatabase.partnerDAO().getAllPartners();
+        Utils utils = new Utils(getContext());
+        List<PartnerModel> partnerModels = new ArrayList<>();
+        partnerModels =  appDatabase.partnerDAO().getAllPartners(utils.getCurrentUserId());
+        parteners.addAll(partnerModels);
+
         ArrayAdapter<PartnerModel> arrayAdapter = new ArrayAdapter<PartnerModel>(getActivity(), android.R.layout.simple_list_item_1, parteners) {
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

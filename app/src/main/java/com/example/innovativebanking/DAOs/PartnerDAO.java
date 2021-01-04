@@ -14,7 +14,7 @@ public interface PartnerDAO {
     @Insert
     void addPartner(PartnerModel partnerModel);
 
-    @Query("SELECT * FROM partner")
-    List<PartnerModel> getAllPartners();
+    @Query("SELECT * FROM partner WHERE userId = (:userId)")
+    List<PartnerModel> getAllPartners(int userId);
 
 }

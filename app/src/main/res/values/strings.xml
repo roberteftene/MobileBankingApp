@@ -28,12 +28,21 @@
     <string name="creditCard_personName">Eftene Robert</string>
     <string name="creditcard_number">1234 2345 2485 2909</string>
     <string name="creditcard_item_checkbox">Chose this</string>
-    <string name="change_cardDetails_btn">Change</string>
+    <string name="change_cardDetails_btn"></string>
     <string name="investBtnText">Invest</string>
     <string name="invest_heading">Discover the most popular stocks</string>
     <string name="enter_your_email_login">Enter your email</string>
     <string name="enter_your_password_login">Enter your password</string>
     <string name="complete_for_sending_money_header">Complete for sending money</string>
+    <string name="modify_your_card_details">Modify your card details</string>
+    <string name="update_card">Update card</string>
+    <string name="account_details">Account Details</string>
+    <string name="update_your_details_below">Update your details below</string>
+    <string name="save_transactions">Save transactions</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="send_money_btnText">Send Money</string>
+    <string name="payments_btn_txt">Payments</string>
+    <string name="info_btn_txt">Settings</string>
     <string-array name="expiry_years_array">
         <item>2020</item>
         <item>2021</item>

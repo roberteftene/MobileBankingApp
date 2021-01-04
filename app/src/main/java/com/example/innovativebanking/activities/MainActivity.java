@@ -15,11 +15,16 @@ import com.example.innovativebanking.R;
 import com.example.innovativebanking.adapters.TransactionAdapter;
 import com.example.innovativebanking.database.AppDatabase;
 import com.example.innovativebanking.database.UserTransactions;
-import com.example.innovativebanking.models.SendModel;
 import com.example.innovativebanking.models.TransactionModel;
 import com.example.innovativebanking.models.UserModel;
 import com.example.innovativebanking.utils.Utils;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private List<TransactionModel> transactions = new ArrayList<>();
     private ListView transactionsList;
     private UserModel mockUser;
-    private SendModel mockSend;
     private static final String TAG = MainActivity.class.getSimpleName();
     private Button sendMoneyBtn, infoBtn, paymentsBtn, sendTransactions, addMoney, investBtn;
     private TextView userGreet, userBalance;
@@ -65,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
         TransactionAdapter transactionAdapter = new TransactionAdapter(this, transactions);
         transactionsList.setAdapter(transactionAdapter);
-
         paymentsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,23 +109,39 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SendMoneyActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("param1");
-        float value = intent.getFloatExtra("param2", 20);
-        String account = intent.getStringExtra("param3");
-        mockSend = new SendModel(name, value, account, false);
-//        TransactionModel transactionModel = new TransactionModel(value, new Date(), name, 1L, "imageEx");
-//        transactions.add(transactionModel);
+
+        sendTransactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File file = new File(MainActivity.this.getFilesDir(),"text");
+                if(!file.exists()) {
+                    file.mkdir();
+                }
+                try {
+                    File transactionsReport = new File(file,"transactionsReport.txt");
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(transactionsReport));
+                    for (TransactionModel transaction : transactions) {
+                        writer.write(transaction.toString());
+                        writer.write("\n");
+                    }
+                    writer.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
     }
 
     public void initMocks(int currUserId) {
         Date date = new Date();
-        transactionModel1 = new TransactionModel(35, date.toString(), "MegaImage", currUserId);
-        transactionModel2 = new TransactionModel(200, date.toString(), "Carrefour", currUserId);
-        transactionModel3 = new TransactionModel(150, date.toString(), "Zara", currUserId);
+        transactionModel1 = new TransactionModel(35, date.toString(), "MegaImage", currUserId, false);
+        transactionModel2 = new TransactionModel(200, date.toString(), "Carrefour", currUserId, false);
+        transactionModel3 = new TransactionModel(150, date.toString(), "Zara", currUserId, false);
         transactions.add(transactionModel1);
         transactions.add(transactionModel2);
         transactions.add(transactionModel3);

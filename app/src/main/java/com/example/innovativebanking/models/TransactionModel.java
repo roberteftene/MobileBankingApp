@@ -18,17 +18,20 @@ public class TransactionModel {
     private String name;
     @ColumnInfo(name = "userId")
     private int userId;
+    @ColumnInfo(name = "isExpense")
+    private boolean isExpense;
 
     @Ignore
     private String transactionImage;
     @Ignore
     private boolean isChecked = false;
 
-    public TransactionModel(float money, String date, String name, int userId) {
+    public TransactionModel(float money, String date, String name, int userId, boolean isExpense) {
         this.money = money;
         this.date = date;
         this.name = name;
         this.userId = userId;
+        this.isExpense = isExpense;
     }
 
     public TransactionModel(float money, String date, String name, String image) {
@@ -36,6 +39,14 @@ public class TransactionModel {
         this.money = money;
         this.date = date;
         this.name = name;
+    }
+
+    public boolean isExpense() {
+        return isExpense;
+    }
+
+    public void setExpense(boolean expense) {
+        isExpense = expense;
     }
 
     public String getImage() {
@@ -96,7 +107,6 @@ public class TransactionModel {
 
     @Override
     public String toString() {
-        return " " + name + "    " + money + " RON" + "\n" +
-                " " + date;
+        return "Name: " + name + "/ Money: " + money + " RON" + "/ Date:  " + date;
     }
 }

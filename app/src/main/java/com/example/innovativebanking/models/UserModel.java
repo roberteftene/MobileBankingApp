@@ -19,18 +19,29 @@ public class UserModel {
     private String lastName;
     @ColumnInfo(name = "user_email")
     private String email;
+    @ColumnInfo(name = "user_phone")
+    private int phone;
     @ColumnInfo(name = "user_password")
     private String password;
     @ColumnInfo(name = "user_birthday")
     private String birthday;
 
-    public UserModel(float balance, String firstName, String lastName, String email, String password, String birthday) {
+    public UserModel(float balance, String firstName, String lastName, String email, int phone, String password, String birthday) {
         this.balance = balance;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.phone = phone;
         this.password = password;
         this.birthday = birthday;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 
     public int getUserId() {

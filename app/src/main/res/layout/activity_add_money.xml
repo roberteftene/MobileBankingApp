@@ -44,6 +44,7 @@
                 android:text="@string/curr_balance" />
 
             <EditText
+                android:id="@+id/amountToBeAddedTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/minimum_amount"
@@ -61,21 +62,21 @@
             android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/savedCreditCardsLv"
-            android:layout_width="359dp"
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:divider="@null"
-            android:dividerHeight="20dp" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+
 
         <Button
             android:id="@+id/addNewCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:backgroundTint="#933F44"
             android:drawableStart="@drawable/ic_baseline_credit_card_24"
@@ -89,7 +90,6 @@
             android:id="@+id/addAmountOfMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:backgroundTint="#933F44"
             android:drawableStart="@android:drawable/ic_input_add"
@@ -97,6 +97,29 @@
             android:text="@string/add_money"
             android:textColor="#fff" />
 
+        </LinearLayout>
+        <Button
+            android:id="@+id/saveCardDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorPrimary"
+            android:elevation="20dp"
+            android:drawableLeft="@drawable/ic_baseline_save_file_24"
+            android:drawablePadding="10dp"
+            android:text="Save card details"
+            android:layout_marginTop="20dp"
+            android:textColor="#fff" />
+
+        <ListView
+            android:id="@+id/savedCreditCardsLv"
+            android:layout_width="359dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:divider="@null"
+            android:dividerHeight="20dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
