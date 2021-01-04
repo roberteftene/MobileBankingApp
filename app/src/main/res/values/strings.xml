@@ -33,6 +33,7 @@
     <string name="invest_heading">Discover the most popular stocks</string>
     <string name="enter_your_email_login">Enter your email</string>
     <string name="enter_your_password_login">Enter your password</string>
+    <string name="complete_for_sending_money_header">Complete for sending money</string>
     <string-array name="expiry_years_array">
         <item>2020</item>
         <item>2021</item>

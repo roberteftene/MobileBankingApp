@@ -1,5 +1,6 @@
 package com.example.innovativebanking.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,19 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 
 import com.example.innovativebanking.R;
+import com.example.innovativebanking.activities.MainActivity;
+import com.example.innovativebanking.database.AppDatabase;
+import com.example.innovativebanking.models.PartnerModel;
+import com.example.innovativebanking.models.TransactionModel;
+import com.example.innovativebanking.utils.Utils;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,18 +45,8 @@ public class SendMoneyFragment extends Fragment {
     private String mParam2;
 
     public SendMoneyFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SendMoneyFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SendMoneyFragment newInstance(String param1, String param2) {
         SendMoneyFragment fragment = new SendMoneyFragment();
         Bundle args = new Bundle();
@@ -63,16 +64,24 @@ public class SendMoneyFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        getParentFragmentManager().setFragmentResultListener("partnerKey", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                nameInput.setText(result.getString("nameKey"));
+                accountInput.setText(result.getString("accountKey"));
+            }
+        });
+        final AppDatabase appDatabase = AppDatabase.getInstance(getContext());
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_send_money, container, false);
         getActivity().findViewById(R.id.addManually).setVisibility(View.INVISIBLE);
         getInputFields(v);
+
         submitSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,16 +103,29 @@ public class SendMoneyFragment extends Fragment {
                     Toast.makeText(getActivity(), "Enter an account", Toast.LENGTH_SHORT).show();
                 }
                 if (valid) {
-                    Toast.makeText(getActivity(), "Succes", Toast.LENGTH_SHORT).show();
-                    Bundle result = new Bundle();
-                    result.putString("bundleKey", nameInput.getText().toString());
-                    result.putString("accountKey", accountInput.getText().toString());
+                    Utils utils = new Utils(getContext());
+                    List<PartnerModel> partnerModels = appDatabase.partnerDAO().getAllPartners();
+                    PartnerModel partnerModel = new PartnerModel(nameInput.getText().toString(), accountInput.getText().toString(), utils.getCurrentUserId());
+                    appDatabase.transactionDAO().insertTransaction(new TransactionModel(Integer.parseInt(valueInput.getText().toString()), new Date().toString(), nameInput.getText().toString(), utils.getCurrentUserId()));
+                    int contor = 0;
                     if (isPartenerInput.isChecked()) {
-                        getParentFragmentManager().setFragmentResult("key", result);
+                        for (PartnerModel model : partnerModels) {
+                            if (model.getAccount().equals(partnerModel.getAccount())) {
+                                contor++;
+                            }
+                        }
+                        if (contor >= 1) {
+                            Toast.makeText(getActivity(), "Already saved", Toast.LENGTH_SHORT).show();
+                        } else {
+                            appDatabase.partnerDAO().addPartner(partnerModel);
+                        }
                     }
+                    Toast.makeText(getActivity(), "Succes", Toast.LENGTH_SHORT).show();
                     nameInput.setText("");
                     accountInput.setText("");
                     valueInput.setText("");
+                    Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
             }
         });

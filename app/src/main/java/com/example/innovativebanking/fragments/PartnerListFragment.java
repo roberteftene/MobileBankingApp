@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -11,9 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 
 import com.example.innovativebanking.R;
+import com.example.innovativebanking.database.AppDatabase;
 import com.example.innovativebanking.models.PartnerModel;
 
 import java.util.ArrayList;
@@ -26,7 +27,6 @@ import java.util.List;
  */
 public class PartnerListFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -35,7 +35,6 @@ public class PartnerListFragment extends Fragment {
     private List<PartnerModel> parteners = new ArrayList<>();
     private String nameResult;
     private String accountResult;
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -64,27 +63,19 @@ public class PartnerListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initMocks();
+//        initMocks();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View v = inflater.inflate(R.layout.fragment_partner_list, container, false);
         getActivity().findViewById(R.id.addManually).setVisibility(View.VISIBLE);
         partenerListView = v.findViewById(R.id.partnerListView);
-        getParentFragmentManager().setFragmentResultListener("key", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String key, @NonNull Bundle bundle) {
-                // We use a String here, but any type that can be put in a Bundle is supported
-                nameResult = bundle.getString("bundleKey");
-                accountResult = bundle.getString("accountKey");
-                parteners.add(new PartnerModel(nameResult, accountResult));
-            }
-        });
-        //TODO Array Adapter Separate for this too
-        //TODO A bit of better UI for this
+        AppDatabase appDatabase = AppDatabase.getInstance(getContext());
+        parteners = appDatabase.partnerDAO().getAllPartners();
         ArrayAdapter<PartnerModel> arrayAdapter = new ArrayAdapter<PartnerModel>(getActivity(), android.R.layout.simple_list_item_1, parteners) {
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -95,13 +86,28 @@ public class PartnerListFragment extends Fragment {
             }
         };
         partenerListView.setAdapter(arrayAdapter);
+        partenerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PartnerModel item = (PartnerModel) partenerListView.getItemAtPosition(position);
+                Bundle result = new Bundle();
+                result.putString("nameKey", item.getName());
+                result.putString("accountKey", item.getAccount());
+                getParentFragmentManager().setFragmentResult("partnerKey", result);
+                SendMoneyFragment sendMoneyFragment = new SendMoneyFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.partnerList, sendMoneyFragment, "tag")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
         return v;
     }
 
     public void initMocks() {
-        PartnerModel partnerModel1 = new PartnerModel("Eftene Robert", "RO123BRD");
-        PartnerModel partnerModel2 = new PartnerModel("Eftene Andrei", "RO222BCR");
-        PartnerModel partnerModel3 = new PartnerModel("John Doe", "RO666REVOLUT");
+        PartnerModel partnerModel1 = new PartnerModel("Eftene Robert", "RO123BRD", 1);
+        PartnerModel partnerModel2 = new PartnerModel("Eftene Andrei", "RO222BCR", 1);
+        PartnerModel partnerModel3 = new PartnerModel("John Doe", "RO666REVOLUT", 1);
         parteners.add(partnerModel1);
         parteners.add(partnerModel2);
         parteners.add(partnerModel3);

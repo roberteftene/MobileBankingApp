@@ -12,6 +12,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.innovativebanking.R;
 import com.example.innovativebanking.fragments.PartnerListFragment;
 import com.example.innovativebanking.fragments.SendMoneyFragment;
+import com.example.innovativebanking.models.PartnerModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SendMoneyActivity extends AppCompatActivity {
@@ -19,6 +23,7 @@ public class SendMoneyActivity extends AppCompatActivity {
     private Button sendManually;
     private SendMoneyFragment sendMoneyFragment = new SendMoneyFragment();
     private PartnerListFragment partnerListFragment = new PartnerListFragment();
+    private List<PartnerModel> parteners = new ArrayList<>();
 
     @SuppressLint({"WrongConstant", "ResourceType"})
     @Override
@@ -27,7 +32,7 @@ public class SendMoneyActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
         setContentView(R.layout.activity_send_money);
-
+        initMocks();
         sendManually = findViewById(R.id.addManually);
         if (findViewById(R.id.partnerList) != null || findViewById(R.id.sendForm) != null) {
             if (savedInstanceState != null) {
@@ -52,5 +57,15 @@ public class SendMoneyActivity extends AppCompatActivity {
 
 
     }
+
+    public void initMocks() {
+        PartnerModel partnerModel1 = new PartnerModel("Eftene Robert", "RO123BRD", 1);
+        PartnerModel partnerModel2 = new PartnerModel("Eftene Andrei", "RO222BCR", 1);
+        PartnerModel partnerModel3 = new PartnerModel("John Doe", "RO666REVOLUT", 1);
+        parteners.add(partnerModel1);
+        parteners.add(partnerModel2);
+        parteners.add(partnerModel3);
+    }
+
 
 }

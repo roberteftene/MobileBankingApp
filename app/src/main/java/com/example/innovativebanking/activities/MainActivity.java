@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     TransactionModel transactionModel1;
     TransactionModel transactionModel2;
     TransactionModel transactionModel3;
+    List<UserTransactions> loggedUserTransactions;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -54,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         userGreet.setText("Hello " + currUser.getFirstName());
         userBalance.setText("Your balance is " + currUser.getBalance());
 
-        List<UserTransactions> loggedUserTransactions = appDatabase.userDAO().getAllTransactionsByUserId();
+        loggedUserTransactions = new ArrayList<UserTransactions>();
+        loggedUserTransactions = appDatabase.userDAO().getAllTransactionsByUserId();
         for (UserTransactions loggedUserTransaction : loggedUserTransactions) {
             if (loggedUserTransaction.userModel.getUserId() == utils.getCurrentUserId()) {
                 transactions.addAll(loggedUserTransaction.transactionModelList);
@@ -62,15 +64,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         TransactionAdapter transactionAdapter = new TransactionAdapter(this, transactions);
-//        ArrayAdapter<TransactionModel> arrayAdapter = new ArrayAdapter<TransactionModel>(this, android.R.layout.simple_list_item_1, transactions) {
-//            @Override
-//            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//                View view = super.getView(position, convertView, parent);
-//                TextView tv = view.findViewById(android.R.id.text1);
-//                tv.setTextColor(getResources().getColor(R.color.colorPrimary));
-//                return view;
-//            }
-//        };
         transactionsList.setAdapter(transactionAdapter);
 
         paymentsBtn.setOnClickListener(new View.OnClickListener() {

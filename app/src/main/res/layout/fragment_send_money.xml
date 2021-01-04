@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Complete for sending money"
+            android:text="@string/complete_for_sending_money_header"
             android:textSize="20dp"
             android:textStyle="bold" />
 

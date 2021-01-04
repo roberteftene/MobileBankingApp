@@ -6,12 +6,14 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.innovativebanking.DAOs.PartnerDAO;
 import com.example.innovativebanking.DAOs.TransactionDAO;
 import com.example.innovativebanking.DAOs.UserDAO;
+import com.example.innovativebanking.models.PartnerModel;
 import com.example.innovativebanking.models.TransactionModel;
 import com.example.innovativebanking.models.UserModel;
 
-@Database(entities = {UserModel.class, TransactionModel.class}, version = 1, exportSchema = true)
+@Database(entities = {UserModel.class, TransactionModel.class, PartnerModel.class}, version = 1, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "mobile_banking";
@@ -32,5 +34,6 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract TransactionDAO transactionDAO();
 
+    public abstract PartnerDAO partnerDAO();
 
 }
