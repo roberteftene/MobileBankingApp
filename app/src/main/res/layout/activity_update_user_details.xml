@@ -23,13 +23,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="100dp"
+                    style="@style/PrimaryHeading"
                     android:gravity="center"
                     android:paddingHorizontal="50dp"
                     android:text="@string/update_your_details_below"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="30dp"
+                    android:textSize="25dp" />
 
                 <EditText
                     android:id="@+id/firstName"
@@ -102,17 +102,15 @@
 
                 <Button
                     android:id="@+id/updateAccount"
-                    android:layout_width="116dp"
-                    android:layout_height="34dp"
+                    style="@style/ButtonRedStyle"
+                    android:layout_width="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="50dp"
                     android:layout_marginBottom="30dp"
                     android:background="@color/colorPrimary"
                     android:text="Update Account"
-                    android:textAllCaps="false"
-                    android:textColor="#fff"
-                    android:textSize="15dp" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
     </LinearLayout>

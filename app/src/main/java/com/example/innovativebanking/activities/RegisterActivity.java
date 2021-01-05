@@ -83,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
                     birthdayUser.append("/");
                     birthdayUser.append(birthday.getYear());
                     int phoneNo = Integer.parseInt(phoneTxt.getText().toString());
-                    UserModel userModel = new UserModel(1, firstNameTxt.getText().toString(), lastNameTxt.getText().toString(), emailTxt.getText().toString(),phoneNo,passTxt.getText().toString(), birthdayUser.toString());
+                    UserModel userModel = new UserModel(1, firstNameTxt.getText().toString(), lastNameTxt.getText().toString(), emailTxt.getText().toString(), phoneNo, passTxt.getText().toString(), birthdayUser.toString(), 1000);
                     appDatabase.userDAO().insertUser(userModel);
                     emptyFields();
                     Toast.makeText(RegisterActivity.this, "Everything is good, you can login now", Toast.LENGTH_SHORT).show();

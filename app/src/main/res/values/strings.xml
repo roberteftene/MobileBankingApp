@@ -45,6 +45,9 @@
     <string name="info_btn_txt">Settings</string>
     <string name="here_are_your_statistics">Here are your statistics</string>
     <string name="our_location">Our location</string>
+    <string name="remember_me">Remember me</string>
+    <string name="register">Register</string>
+    <string name="hello_robert">Hello Robert</string>
     <string-array name="expiry_years_array">
         <item>2020</item>
         <item>2021</item>

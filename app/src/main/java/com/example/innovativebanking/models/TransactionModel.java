@@ -6,7 +6,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "transaction")
-public class TransactionModel {
+public class TransactionModel implements Comparable<TransactionModel> {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -108,5 +108,10 @@ public class TransactionModel {
     @Override
     public String toString() {
         return "Name: " + name + "/ Money: " + money + " RON" + "/ Date:  " + date;
+    }
+
+    @Override
+    public int compareTo(TransactionModel o) {
+        return this.getDate().compareTo(o.getDate());
     }
 }

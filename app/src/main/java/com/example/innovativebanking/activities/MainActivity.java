@@ -3,10 +3,12 @@ package com.example.innovativebanking.activities;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     TransactionModel transactionModel2;
     TransactionModel transactionModel3;
     List<UserTransactions> loggedUserTransactions;
+    private ProgressBar balanceProgress;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -56,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         userGreet.setText("Hello " + currUser.getFirstName());
         userBalance.setText("Your balance is " + currUser.getBalance());
 
+        balanceProgress.setMax(currUser.getBalanceTarget());
+        balanceProgress.setProgress((int) currUser.getBalance());
+
         loggedUserTransactions = new ArrayList<UserTransactions>();
         loggedUserTransactions = appDatabase.userDAO().getAllTransactionsByUserId();
         for (UserTransactions loggedUserTransaction : loggedUserTransactions) {
@@ -63,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 transactions.addAll(loggedUserTransaction.transactionModelList);
             }
         }
+
+        Collections.sort(transactions, Collections.<TransactionModel>reverseOrder());
 
         TransactionAdapter transactionAdapter = new TransactionAdapter(this, transactions);
         transactionsList.setAdapter(transactionAdapter);
@@ -155,5 +164,13 @@ public class MainActivity extends AppCompatActivity {
         infoBtn = findViewById(R.id.infoBtn);
         sendTransactions = findViewById(R.id.sendTransactions);
         investBtn = findViewById(R.id.investBtn);
+        balanceProgress = findViewById(R.id.progressBar);
+    }
+
+    public void resetData() {
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("accountBalanceTarget");
+        editor.apply();
     }
 }

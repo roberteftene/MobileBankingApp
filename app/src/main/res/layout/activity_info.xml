@@ -19,13 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/account_details"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"
             android:paddingLeft="30dp"
-            android:layout_marginTop="50dp"
+            style="@style/PrimaryHeading"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textSize="20dp"/>
+            android:layout_marginTop="20dp" />
 
         <Button
             android:id="@+id/updateUser"
@@ -33,29 +31,27 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:background="@color/colorPrimary"
             android:drawableLeft="@drawable/ic_baseline_edit_24"
             android:drawablePadding="10dp"
             android:padding="10dp"
             android:text="Edit Account"
-            android:textColor="@color/color_white"
             android:textStyle="bold"
-            android:layout_gravity="center"/>
+            style="@style/ButtonRedStyle"
+            android:layout_gravity="center" />
 
         <Button
-        android:id="@+id/deleteUser"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:padding="10dp"
-        android:drawableLeft="@drawable/ic_baseline_close_24"
-        android:drawablePadding="10dp"
-        android:text="Close Account"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/color_white"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-            android:layout_gravity="center"/>
+            android:id="@+id/deleteUser"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:drawableLeft="@drawable/ic_baseline_close_24"
+            android:drawablePadding="10dp"
+            android:text="Close Account"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            style="@style/ButtonRedStyle"
+            android:layout_gravity="center" />
 
         <Button
             android:id="@+id/logOut"
@@ -66,11 +62,24 @@
             android:drawableLeft="@drawable/ic_baseline_exit_to_app_24"
             android:drawablePadding="10dp"
             android:text="Log out"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/color_white"
+            style="@style/ButtonRedStyle"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/setBalanceTargetBtn"
+            style="@style/ButtonRedStyle"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/ic_baseline_push_pin_24"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
             android:layout_marginLeft="20dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp" />
+            android:text="Set balance target"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"

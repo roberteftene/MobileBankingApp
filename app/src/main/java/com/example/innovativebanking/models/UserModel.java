@@ -25,8 +25,10 @@ public class UserModel {
     private String password;
     @ColumnInfo(name = "user_birthday")
     private String birthday;
+    @ColumnInfo(name = "user_target")
+    private int balanceTarget;
 
-    public UserModel(float balance, String firstName, String lastName, String email, int phone, String password, String birthday) {
+    public UserModel(float balance, String firstName, String lastName, String email, int phone, String password, String birthday, int balanceTarget) {
         this.balance = balance;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +36,15 @@ public class UserModel {
         this.phone = phone;
         this.password = password;
         this.birthday = birthday;
+        this.balanceTarget = balanceTarget;
+    }
+
+    public int getBalanceTarget() {
+        return balanceTarget;
+    }
+
+    public void setBalanceTarget(int balanceTarget) {
+        this.balanceTarget = balanceTarget;
     }
 
     public int getPhone() {

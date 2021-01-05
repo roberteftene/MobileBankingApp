@@ -26,14 +26,14 @@
 
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    style="@style/PrimaryHeading"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_width="match_parent"
                     android:layout_marginTop="10dp"
                     android:text="@string/modify_your_card_details"
                     android:textColor="@color/colorPrimary"
-                    android:textStyle="bold"
-
+                    android:gravity="center"
                     />
 
                 <EditText
@@ -112,12 +112,11 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:backgroundTint="#933F44"
                     android:drawableStart="@drawable/ic_baseline_edit_24"
                     android:drawablePadding="9dp"
                     android:drawableTint="#fff"
                     android:text="@string/update_card"
-                    android:textColor="#fff" />
+                    style="@style/ButtonRedStyle" />
 
             </LinearLayout>
         </ScrollView>

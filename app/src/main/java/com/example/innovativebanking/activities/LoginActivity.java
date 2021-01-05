@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.innovativebanking.R;
 import com.example.innovativebanking.database.AppDatabase;
 import com.example.innovativebanking.models.UserModel;
+import com.example.innovativebanking.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button register;
     List<UserModel> userModelList;
     private EditText mailAccount, passAccount;
+    private Switch rememberMe;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -39,6 +42,14 @@ public class LoginActivity extends AppCompatActivity {
         passAccount = findViewById(R.id.passwordInputLogin);
         login = findViewById(R.id.loginBtn);
         register = findViewById(R.id.registerBtn);
+        rememberMe = findViewById(R.id.rememberMeSwitch);
+        Utils utils = new Utils(this);
+        String[] userCredentials = utils.getUserCredentials();
+        if (userCredentials != null) {
+            mailAccount.setText(userCredentials[0]);
+            passAccount.setText(userCredentials[1]);
+        }
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,10 +63,18 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putInt("currentUserID", userModelList.get(i).getUserId());
                         editor.apply();
                         Log.v("Session", "ID:" + userModelList.get(i).getUserId());
+                        if (rememberMe.isChecked()) {
+                            editor.putString("userEmail", mailAccount.getText().toString());
+                            editor.putString("userPass", passAccount.getText().toString());
+                            editor.apply();
+                        } else {
+                            editor.remove("userEmail");
+                            editor.remove("userPass");
+                            editor.commit();
+                        }
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
-                        mailAccount.setText("");
-                        passAccount.setText("");
+
                         break;
                     } else {
                         Toast.makeText(LoginActivity.this, "Email/Password incorrect", Toast.LENGTH_SHORT).show();

@@ -11,10 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:backgroundTint="#fff"
         android:gravity="center"
         android:text="Send manually"
-        android:textColor="@color/colorPrimary" />
+        style="@style/ButtonWhiteStyle" />
 
     <FrameLayout
         android:id="@+id/partnerList"

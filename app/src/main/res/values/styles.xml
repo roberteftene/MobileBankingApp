@@ -5,4 +5,29 @@
         <item name="colorPrimary">@color/colorPrimary</item>
     </style>
 
+    <style name="PrimaryHeading">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">#9B2F2F</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ButtonRedStyle">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:background">#9B2F2F</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="elevation">3dp</item>
+    </style>
+
+    <style name="ButtonWhiteStyle">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">#9B2F2F</item>
+        <item name="android:background">#fff</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="elevation">3dp</item>
+    </style>
+
+
 </resources>

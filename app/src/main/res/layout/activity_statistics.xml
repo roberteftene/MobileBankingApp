@@ -22,9 +22,8 @@
             android:gravity="center"
             android:text="@string/here_are_your_statistics"
             android:textAllCaps="true"
-            android:textColor="@color/colorPrimary"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            style="@style/PrimaryHeading" />
 
         <TextView
             android:id="@+id/expensesTxt"

@@ -6,8 +6,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,8 +26,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class InfoActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private Button updateAcount, closeAccount, logOut;
+    private Button updateAcount, closeAccount, logOut, setTargetBtn;
     GoogleMap map;
+    private String accountBalanceTarget;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -35,7 +38,7 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
         setContentView(R.layout.activity_info);
         final AppDatabase appDatabase = AppDatabase.getInstance(this);
-        Utils utils = new Utils(this);
+        final Utils utils = new Utils(this);
         final UserModel currentUser = appDatabase.userDAO().getUserById(utils.getCurrentUserId());
         updateAcount = findViewById(R.id.updateUser);
         closeAccount = findViewById(R.id.deleteUser);
@@ -74,6 +77,40 @@ public class InfoActivity extends AppCompatActivity implements OnMapReadyCallbac
                 });
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
+            }
+        });
+
+        setTargetBtn = findViewById(R.id.setBalanceTargetBtn);
+        setTargetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder targetDialog = new AlertDialog.Builder(InfoActivity.this);
+                targetDialog.setTitle("Set a new target balance!");
+                final EditText targetValue = new EditText(InfoActivity.this);
+                targetValue.setInputType(InputType.TYPE_CLASS_NUMBER);
+                targetDialog.setView(targetValue);
+
+                targetDialog.setPositiveButton("SET", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        accountBalanceTarget = targetValue.getText().toString();
+                        currentUser.setBalanceTarget(Integer.parseInt(accountBalanceTarget));
+                        appDatabase.userDAO().updateUser(currentUser);
+                        Intent intent = new Intent(InfoActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+
+                    }
+                });
+
+                targetDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        ;
+                    }
+                });
+                targetDialog.show();
             }
         });
 

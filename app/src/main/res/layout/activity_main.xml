@@ -13,7 +13,7 @@
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="Hello Robert"
+        android:text="@string/hello_robert"
         android:textSize="25dp"
         android:textStyle="bold" />
 

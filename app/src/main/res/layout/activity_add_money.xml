@@ -15,13 +15,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            style="@style/PrimaryHeading"
             android:layout_marginTop="30dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="@string/add_money_heading"
-            android:textColor="@color/colorPrimary"
-            android:textSize="12dp"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:textSize="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,53 +63,51 @@
             android:textStyle="bold" />
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_height="102dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:layout_gravity="center">
+            android:orientation="horizontal">
 
 
-
-        <Button
-            android:id="@+id/addNewCard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#933F44"
-            android:drawableStart="@drawable/ic_baseline_credit_card_24"
-            android:drawablePadding="9dp"
-            android:drawableTint="#fff"
-            android:text="@string/add_card"
-            android:textColor="#fff" />
+            <Button
+                android:id="@+id/addNewCard"
+                style="@style/ButtonRedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ic_baseline_credit_card_24"
+                android:drawablePadding="9dp"
+                android:drawableTint="#fff"
+                android:text="@string/add_card" />
 
 
-        <Button
-            android:id="@+id/addAmountOfMoney"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#933F44"
-            android:drawableStart="@android:drawable/ic_input_add"
-            android:drawableTint="#fff"
-            android:text="@string/add_money"
-            android:textColor="#fff" />
+            <Button
+                android:id="@+id/addAmountOfMoney"
+                style="@style/ButtonRedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@android:drawable/ic_input_add"
+                android:drawableTint="#fff"
+                android:text="@string/add_money" />
 
         </LinearLayout>
+
         <Button
             android:id="@+id/saveCardDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="@color/colorPrimary"
             android:elevation="20dp"
             android:drawableLeft="@drawable/ic_baseline_save_file_24"
             android:drawablePadding="10dp"
             android:text="Save card details"
             android:layout_marginTop="20dp"
-            android:textColor="#fff" />
+            style="@style/ButtonRedStyle" />
 
         <ListView
             android:id="@+id/savedCreditCardsLv"
