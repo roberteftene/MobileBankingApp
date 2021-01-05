@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.UpdateUserDetails"></activity>
+        <activity android:name=".activities.StatisticsActivity"></activity>
+        <activity android:name=".activities.UpdateUserDetails" />
         <activity android:name=".activities.UpdateCardDetails" />
         <activity android:name=".activities.InvestActivity" />
         <activity android:name=".activities.AddCardActivity" />
         <activity android:name=".activities.AddMoneyActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.InfoActivity" />
-        <activity android:name=".activities.PaymentsActivity" />
         <activity android:name=".activities.SendMoneyActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>

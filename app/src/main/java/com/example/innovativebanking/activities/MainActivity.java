@@ -19,11 +19,8 @@ import com.example.innovativebanking.models.TransactionModel;
 import com.example.innovativebanking.models.UserModel;
 import com.example.innovativebanking.utils.Utils;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         paymentsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PaymentsActivity.class);
+                Intent intent = new Intent(MainActivity.this, StatisticsActivity.class);
                 startActivity(intent);
             }
         });
