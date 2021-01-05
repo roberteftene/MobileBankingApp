@@ -6,27 +6,26 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.innovativebanking.DownloadAsync;
 import com.example.innovativebanking.R;
 import com.example.innovativebanking.database.AppDatabase;
 import com.example.innovativebanking.models.UserModel;
 import com.example.innovativebanking.utils.Utils;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-public class InfoActivity extends AppCompatActivity {
+public class InfoActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private Button updateAcount, closeAccount, logOut;
-
+    GoogleMap map;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -87,5 +86,19 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+
+        LatLng lat = new LatLng(44.41890470076146, 26.116029954557366);
+        map.addMarker(new MarkerOptions().position(lat).title("Bank Office"));
+        map.setMinZoomPreference(15);
+        map.moveCamera(CameraUpdateFactory.newLatLng(lat));
     }
 }
