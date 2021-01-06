@@ -58,6 +58,9 @@
     <string name="vault_txt_hint">Enter a name for vault</string>
     <string name="vault_target_hint">Enter a target for your vault</string>
     <string name="create_vault">Create vault</string>
+    <string name="update_vault">Update vault</string>
+    <string name="vault_description">Vault description</string>
+    <string name="update_your_vault_details">Update your vault details</string>
     <string-array name="expiry_years_array">
         <item>2020</item>
         <item>2021</item>

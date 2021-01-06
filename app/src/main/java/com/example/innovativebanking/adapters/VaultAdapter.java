@@ -20,8 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.innovativebanking.R;
-import com.example.innovativebanking.activities.CreateVaultActivity;
 import com.example.innovativebanking.activities.MainActivity;
+import com.example.innovativebanking.activities.UpdateVaultActivity;
 import com.example.innovativebanking.database.AppDatabase;
 import com.example.innovativebanking.models.UserModel;
 import com.example.innovativebanking.models.VaultModel;
@@ -218,10 +218,10 @@ public class VaultAdapter extends ArrayAdapter<VaultModel> {
         viewHolder.editVaultBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CreateVaultActivity.class);
-                intent.putExtra("vaultId", vaultModel.getVaultId());
-                getContext().startActivity(intent);
-                ((Activity) getContext()).finish();
+                Intent intent = new Intent(getContext(), UpdateVaultActivity.class);
+                intent.putExtra("vaultId", Integer.toString(vaultModel.getVaultId()));
+                context.startActivity(intent);
+                ((Activity) context).finish();
             }
         });
         return convertView;
