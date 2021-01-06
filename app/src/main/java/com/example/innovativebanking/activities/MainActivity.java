@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView transactionsList;
     private UserModel mockUser;
     private static final String TAG = MainActivity.class.getSimpleName();
-    private Button sendMoneyBtn, infoBtn, paymentsBtn, sendTransactions, addMoney, investBtn;
+    private Button sendMoneyBtn, infoBtn, paymentsBtn, sendTransactions, addMoney, investBtn, vaultsBtn;
     private TextView userGreet, userBalance;
     TransactionModel transactionModel1;
     TransactionModel transactionModel2;
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         final AppDatabase appDatabase = AppDatabase.getInstance(this);
         UserModel currUser = appDatabase.userDAO().getUserById(utils.getCurrentUserId());
         userGreet.setText("Hello " + currUser.getFirstName());
-        userBalance.setText("Your balance is " + currUser.getBalance());
+        userBalance.setText("Your balance is " + currUser.getBalance() + " RON");
 
         balanceProgress.setMax(currUser.getBalanceTarget());
         balanceProgress.setProgress((int) currUser.getBalance());
@@ -88,6 +88,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        vaultsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, VaultsActivity.class);
                 startActivity(intent);
             }
         });
@@ -140,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void initMocks(int currUserId) {
@@ -165,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
         sendTransactions = findViewById(R.id.sendTransactions);
         investBtn = findViewById(R.id.investBtn);
         balanceProgress = findViewById(R.id.progressBar);
+        vaultsBtn = findViewById(R.id.vaultsBtn);
     }
 
     public void resetData() {

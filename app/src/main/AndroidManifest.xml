@@ -14,12 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.CreateVaultActivity"></activity>
+        <activity android:name=".activities.VaultsActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
-        <activity android:name=".activities.StatisticsActivity"></activity>
+        <activity android:name=".activities.StatisticsActivity" />
         <activity android:name=".activities.UpdateUserDetails" />
         <activity android:name=".activities.UpdateCardDetails" />
         <activity android:name=".activities.InvestActivity" />

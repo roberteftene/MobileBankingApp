@@ -144,6 +144,16 @@
                 android:textColor="#fff" />
 
             <Button
+                android:id="@+id/vaultsBtn"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawableTop="@drawable/ic_baseline_vpn_key_24"
+                android:text="@string/vaults"
+                android:textColor="#fff" />
+
+            <Button
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

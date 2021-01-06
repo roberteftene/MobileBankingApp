@@ -48,6 +48,16 @@
     <string name="remember_me">Remember me</string>
     <string name="register">Register</string>
     <string name="hello_robert">Hello Robert</string>
+    <string name="vaults">VAULTS</string>
+    <string name="get_your_economies_in_a_secure_vault">Get your economies in a secure vault</string>
+    <string name="create_new_vault">CREATE NEW VAULT</string>
+    <string name="vault_name">VACANTA ITALIA</string>
+    <string name="add_money_vault">ADD</string>
+    <string name="withdraw_money_vault">WITHDRAW</string>
+    <string name="complete_to_create_your_new_vault">Complete to create your new vault</string>
+    <string name="vault_txt_hint">Enter a name for vault</string>
+    <string name="vault_target_hint">Enter a target for your vault</string>
+    <string name="create_vault">Create vault</string>
     <string-array name="expiry_years_array">
         <item>2020</item>
         <item>2021</item>

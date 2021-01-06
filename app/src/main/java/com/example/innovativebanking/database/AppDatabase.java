@@ -10,12 +10,14 @@ import com.example.innovativebanking.DAOs.CreditCardDAO;
 import com.example.innovativebanking.DAOs.PartnerDAO;
 import com.example.innovativebanking.DAOs.TransactionDAO;
 import com.example.innovativebanking.DAOs.UserDAO;
+import com.example.innovativebanking.DAOs.VaultDAO;
 import com.example.innovativebanking.models.CreditCardModel;
 import com.example.innovativebanking.models.PartnerModel;
 import com.example.innovativebanking.models.TransactionModel;
 import com.example.innovativebanking.models.UserModel;
+import com.example.innovativebanking.models.VaultModel;
 
-@Database(entities = {UserModel.class, TransactionModel.class, PartnerModel.class, CreditCardModel.class}, version = 1, exportSchema = true)
+@Database(entities = {UserModel.class, TransactionModel.class, PartnerModel.class, CreditCardModel.class, VaultModel.class}, version = 1, exportSchema = true)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DB_NAME = "mobile_banking";
@@ -39,5 +41,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract PartnerDAO partnerDAO();
 
     public abstract CreditCardDAO creditCardDAO();
+
+    public abstract VaultDAO vaultDAO();
 
 }

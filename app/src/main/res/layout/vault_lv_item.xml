@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryWhiter"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/vaultName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/vault_name"
+            android:textAllCaps="true"
+            android:textColor="@color/color_grey"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/color_grey"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/vaultStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="You have 320RON out of 1000RON"
+                android:textColor="@color/color_white"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:max="1000"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:progress="500"
+                android:progressTint="#933F44" />
+
+            <TextView
+                android:id="@+id/vaultDescriptionTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+                android:textColor="@color/color_white"
+                android:textSize="15dp" />
+
+            <LinearLayout
+                android:id="@+id/vaultBtnOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/addMoneyVaultBtn"
+                    style="@style/ButtonWhiteStyle"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:drawablePadding="5dp"
+                    android:padding="5dp"
+                    android:text="@string/add_money_vault"
+                    android:textSize="10dp" />
+
+                <Button
+                    android:id="@+id/withdrawVaultBtn"
+                    style="@style/ButtonWhiteStyle"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:text="@string/withdraw_money_vault"
+                    android:textSize="10dp" />
+
+                <Button
+                    android:id="@+id/closeVaultBtn"
+                    style="@style/ButtonWhiteStyle"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:drawablePadding="5dp"
+                    android:padding="5dp"
+                    android:text="CLOSE VAULT"
+                    android:textSize="10dp" />
+
+                <Button
+                    android:id="@+id/editVaultBtn"
+                    style="@style/ButtonWhiteStyle"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:drawablePadding="5dp"
+                    android:padding="5dp"
+                    android:text="EDIT VAULT"
+                    android:textSize="10dp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
